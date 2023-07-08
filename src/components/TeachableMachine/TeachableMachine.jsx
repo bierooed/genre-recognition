@@ -25,8 +25,7 @@ export default function TeachableMachine() {
   }, []);
 
   async function listenMusic() {
-    const classLabels = model.wordLabels();
-    console.log(classLabels);
+    const classLabels = model.wordLabels(); // ['Background Noise', 'Pop', 'Rap']
     model.listen(
       (result) => {
         const scores = result.scores;
@@ -38,10 +37,10 @@ export default function TeachableMachine() {
         });
       },
       {
-        includeSpectrogram: true, // in case listen should return result.spectrogram
+        includeSpectrogram: true,
         probabilityThreshold: 0.75,
         invokeCallbackOnNoiseAndUnknown: true,
-        overlapFactor: 0.5, // probably want between 0.5 and 0.75. More info in README
+        overlapFactor: 0.5,
       }
     );
   }
